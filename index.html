@@ -69,6 +69,7 @@
 
         .nav.scrolled .nav-logo img {
             height: 48px;
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(184,147,90,0.35));
         }
 
         .nav-links {
@@ -85,6 +86,7 @@
             letter-spacing: -0.01em;
             position: relative;
             transition: all 0.2s;
+            padding: 8px 0;
         }
 
         .nav-links a::after {
@@ -133,7 +135,7 @@
             display: flex;
             align-items: center;
             padding: 140px 80px 100px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.85) 100%), 
+            background: linear-gradient(135deg, rgba(26,26,26,0.65) 0%, rgba(26,26,26,0.25) 60%, rgba(26,26,26,0.05) 100%), 
                         url('https://storage.googleapis.com/msgsndr/kfZT6c91jZcZU6PUztl8/media/693cb61cd5693fb98257d412.webp') center/cover;
         }
 
@@ -147,15 +149,16 @@
             align-items: center;
             gap: 10px;
             padding: 10px 20px;
-            background: var(--white);
-            border: 1px solid var(--gray-light);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184,147,90,0.3);
             border-radius: 24px;
             font-size: 13px;
             font-weight: 500;
             letter-spacing: 0.02em;
             color: var(--gold);
             margin-bottom: 32px;
-            box-shadow: 0 2px 8px var(--shadow);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
         }
 
         .hero-badge svg {
@@ -168,8 +171,9 @@
             font-size: clamp(52px, 8vw, 92px);
             line-height: 1.1;
             margin-bottom: 28px;
-            color: var(--charcoal);
+            color: var(--white);
             letter-spacing: -0.02em;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
 
         .hero-title .gold {
@@ -178,18 +182,26 @@
 
         .hero-subtitle {
             font-size: 22px;
-            color: var(--gray);
+            color: rgba(255,255,255,0.95);
             margin-bottom: 24px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: -0.01em;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 24px 0;
+            box-shadow: 0 0 12px rgba(184,147,90,0.5);
         }
 
         .hero-description {
             font-size: 17px;
-            color: var(--gray);
+            color: rgba(255,255,255,0.85);
             line-height: 1.75;
             margin-bottom: 40px;
-            max-width: 600px;
+            max-width: 520px;
         }
 
         .hero-ctas {
@@ -199,41 +211,41 @@
         }
 
         .btn-primary {
-            background: var(--charcoal);
-            color: var(--white);
+            background: var(--gold);
+            color: var(--charcoal);
             padding: 18px 40px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             border-radius: 6px;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 20px rgba(184,147,90,0.35);
         }
 
         .btn-primary:hover {
-            background: var(--gold);
+            background: var(--gold-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(184,147,90,0.25);
+            box-shadow: 0 8px 28px rgba(184,147,90,0.45);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--charcoal);
+            color: var(--white);
             padding: 18px 40px;
             font-size: 16px;
             font-weight: 500;
             text-decoration: none;
-            border: 1.5px solid var(--charcoal);
+            border: 2px solid var(--white);
             border-radius: 6px;
             transition: all 0.3s;
         }
 
         .btn-secondary:hover {
-            background: var(--charcoal);
-            color: var(--white);
+            background: var(--white);
+            color: var(--charcoal);
         }
 
         @keyframes fadeInUp {
@@ -259,6 +271,12 @@
 
         .trust-item {
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-6px);
         }
 
         .trust-icon {
@@ -271,6 +289,11 @@
             background: var(--white);
             border-radius: 50%;
             box-shadow: 0 2px 12px var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .trust-item:hover .trust-icon {
+            box-shadow: 0 8px 24px rgba(184,147,90,0.2);
         }
 
         .trust-icon svg {
@@ -320,6 +343,8 @@
             object-fit: cover;
             top: 0;
             left: 0;
+            outline: 2px solid rgba(184,147,90,0.25);
+            outline-offset: -12px;
         }
 
         .about-img-2 {
@@ -337,7 +362,7 @@
             transform: translate(-50%, -50%);
             width: 150px;
             height: 150px;
-            background: var(--white);
+            background: radial-gradient(circle, #ffffff 60%, #f6f1e9 100%);
             border: 1px solid var(--gray-light);
             border-radius: 50%;
             display: flex;
@@ -458,12 +483,37 @@
             border-radius: 12px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid transparent;
+            position: relative;
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(184,147,90,0.15);
+        }
+
+        .service-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--white);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .service-card:hover {
             border-color: var(--gold);
             box-shadow: 0 16px 48px rgba(184,147,90,0.12);
             transform: translateY(-4px);
+        }
+
+        .service-card.featured:hover {
+            transform: scale(1.02) translateY(-4px);
         }
 
         .service-icon {
@@ -568,18 +618,19 @@
             height: 420px;
             border-radius: 12px;
             overflow: hidden;
-            cursor: pointer;
+            cursor: zoom-in;
         }
 
         .project-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), filter 0.7s;
         }
 
         .project-card:hover img {
             transform: scale(1.08);
+            filter: blur(2px);
         }
 
         .project-overlay {
@@ -717,10 +768,20 @@
             transition: color 0.3s;
             margin-bottom: 36px;
             letter-spacing: -0.02em;
+            animation: phonePulse 8s ease-in-out infinite;
         }
 
         .cta-phone:hover {
             color: var(--gold-dark);
+        }
+
+        @keyframes phonePulse {
+            0%, 100% { 
+                text-shadow: 0 0 0 rgba(184,147,90,0);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(184,147,90,0.5);
+            }
         }
 
         .cta-buttons {
@@ -1034,6 +1095,8 @@
             
             <p class="hero-subtitle">Professional Roofing • Concrete • Hardscape</p>
             
+            <div class="hero-divider"></div>
+            
             <p class="hero-description">
                 For over 15 years, Black Diamond Construction has been Wenatchee's premier contractor, delivering exceptional craftsmanship and lasting results. From complete roof replacements to stunning outdoor hardscapes and precision concrete work, we bring expertise and dedication to every project.
             </p>
@@ -1188,12 +1251,12 @@
         </div>
         
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card featured">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
                 <h3>Roofing</h3>
-                <p>Complete roofing solutions backed by our lifetime warranty. We save homeowners thousands on quality installations while using only premium materials from trusted manufacturers.</p>
+                <p><strong>Complete roofing solutions backed by our lifetime warranty.</strong> We save homeowners thousands on quality installations while using only premium materials from trusted manufacturers.</p>
                 <p style="margin-bottom: 20px; color: var(--gray); font-size: 15px; line-height: 1.7;">Whether you need a complete roof replacement, emergency repairs, or seasonal maintenance, our experienced team handles every project with precision and care. We specialize in both residential and commercial roofing systems.</p>
                 <ul class="service-list">
                     <li>Shingles & Metal Roofs</li>
@@ -1212,7 +1275,7 @@
                     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                 </div>
                 <h3>Concrete</h3>
-                <p>Professional concrete work with the equipment and experience to handle any project size. From foundations to decorative finishes, we deliver durable results that last.</p>
+                <p><strong>Professional concrete work with the equipment and experience to handle any project size.</strong> From foundations to decorative finishes, we deliver durable results that last.</p>
                 <p style="margin-bottom: 20px; color: var(--gray); font-size: 15px; line-height: 1.7;">Our concrete services combine structural integrity with aesthetic appeal. We use advanced techniques and high-quality materials to ensure every pour meets the highest standards of durability and appearance.</p>
                 <ul class="service-list">
                     <li>Foundations & Footings</li>
@@ -1231,7 +1294,7 @@
                     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h3>Hardscape</h3>
-                <p>Transform your outdoor space with professional hardscaping that adds value and beauty. We create stunning outdoor living areas that you'll enjoy for years to come.</p>
+                <p><strong>Transform your outdoor space with professional hardscaping that adds value and beauty.</strong> We create stunning outdoor living areas that you'll enjoy for years to come.</p>
                 <p style="margin-bottom: 20px; color: var(--gray); font-size: 15px; line-height: 1.7;">From elegant retaining walls to custom patios, our hardscape solutions enhance both the functionality and aesthetics of your property. We work with premium materials to create outdoor spaces that withstand Wenatchee's climate.</p>
                 <ul class="service-list">
                     <li>Retaining & Rock Walls</li>
